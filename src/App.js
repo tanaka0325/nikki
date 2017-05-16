@@ -1,11 +1,11 @@
 import React from 'react';
 
-import LoginForm from './components/LoginForm';
+import Router from './Router';
 
 export default class App extends React.Component {
   render() {
     return (
-      <LoginForm />
+      <Router />
     );
   }
 }
