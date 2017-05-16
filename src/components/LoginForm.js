@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Container,
   Header,
@@ -13,13 +14,26 @@ import {
   Text
 } from 'native-base';
 
-export default class LoginForm extends Component {
+import {
+  emailChanged,
+  passwordChanged
+} from '../actions';
+
+class LoginForm extends Component {
+  onEmailChange(text) {
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+    this.props.passwordChanged(text);
+  }
+
   render() {
     return (
       <Container>
         <Header>
           <Body>
-            <Title>LoginForm</Title>
+            <Title>LoginForm!!!</Title>
           </Body>
         </Header>
         <Content>
@@ -28,7 +42,9 @@ export default class LoginForm extends Component {
               <Label>Email</Label>
               <Input
                 fixedLabel
-                placeholder="test@test.com"
+                placeholder="test@example.com"
+                onChangeText={this.onEmailChange.bind(this)}
+                value={this.props.email}
               />
             </Item>
             <Item last>
@@ -36,6 +52,8 @@ export default class LoginForm extends Component {
               <Input
                 fixedLabel
                 placeholder="password"
+                onChangeText={this.onPasswordChange.bind(this)}
+                value={this.props.password}
               />
             </Item>
           </Form>
@@ -48,3 +66,10 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ auth }) => {
+  const { email, password } = auth;
+  return { email, password };
+};
+
+export default connect(mapStateToProps, { emailChanged, passwordChanged })(LoginForm);

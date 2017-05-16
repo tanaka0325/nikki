@@ -1,8 +1,10 @@
 import Expo from 'expo';
 import React from 'react';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './App';
+import reducers from './reducers';
 
 export default class Setup extends React.Component {
   async componentWillMount() {
@@ -13,8 +15,9 @@ export default class Setup extends React.Component {
   }
 
   render() {
+    const store = createStore(reducers);
     return (
-      <Provider>
+      <Provider store={store}>
         <App />
       </Provider>
     );
