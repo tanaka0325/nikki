@@ -40,6 +40,9 @@ class LoginForm extends Component {
               <Label>Email</Label>
               <Input
                 fixedLabel
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardType="email-address"
                 placeholder="test@test.com"
                 onChangeText={this.onEmailChange.bind(this)}
                 value={this.props.email}
@@ -49,6 +52,9 @@ class LoginForm extends Component {
               <Label>Password</Label>
               <Input
                 fixedLabel
+                autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry
                 placeholder="password"
                 onChangeText={this.onPasswordChange.bind(this)}
                 value={this.props.password}
