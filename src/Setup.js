@@ -22,7 +22,7 @@ export default class Setup extends React.Component {
       databaseURL: config.firebase.databaseURL,
       projectId: config.firebase.projectId,
       storageBucket: config.firebase.storageBucket,
-      messagingSenderId: config.firebase.messagingSenderId,
+      messagingSenderId: config.firebase.messagingSenderId
     });
   }
 
